@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "version": "1.0",
+  "name": "Simple extension-reloader",
+  "description": "Learning how to make a chrome extension!",
+  "icons": {
+    "16": "images/puppy16.png",
+    "48": "images/puppy48.png",
+    "128": "images/puppy.png"
+  },
+  "browser_action": {
+    "default_icon": "images/puppy.png",
+    "default_popup": "popup/index.html"
+  },
+  "background": {
+    "scripts": [
+      "background/index.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "run_at": "document_end",
+      "matches": ["http://hallow.nl/"],
+      "js": ["inject/index.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    "inject/*"
+  ],
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "https://*/*",
+    "http://*/*",
+    "tabs"
+  ]
+}
